@@ -122,3 +122,4 @@ D:\GrpcProduct\obj\Debug\net10.0\refint\GrpcProduct.dll
 D:\GrpcProduct\obj\Debug\net10.0\GrpcProduct.pdb
 D:\GrpcProduct\obj\Debug\net10.0\GrpcProduct.genruntimeconfig.cache
 D:\GrpcProduct\obj\Debug\net10.0\ref\GrpcProduct.dll
+D:\GrpcProduct\obj\Debug\net10.0\GrpcProduct.sourcelink.json

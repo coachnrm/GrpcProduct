@@ -45,7 +45,7 @@ namespace GrpcProductService {
             "KAkSJgoHcHJvZHVjdBgDIAEoCzIVLnByb2R1Y3QuUHJvZHVjdE1vZGVsIiIK",
             "FERlbGV0ZVByb2R1Y3RSZXF1ZXN0EgoKAmlkGAEgASgJIjkKFURlbGV0ZVBy",
             "b2R1Y3RSZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIEg8KB21lc3NhZ2UYAiAB",
-            "KAkyjAMKB1Byb2R1Y3QSTgoNQ3JlYXRlUHJvZHVjdBIdLnByb2R1Y3QuQ3Jl",
+            "KAkyzQMKB1Byb2R1Y3QSTgoNQ3JlYXRlUHJvZHVjdBIdLnByb2R1Y3QuQ3Jl",
             "YXRlUHJvZHVjdFJlcXVlc3QaHi5wcm9kdWN0LkNyZWF0ZVByb2R1Y3RSZXNw",
             "b25zZRJFCgpHZXRQcm9kdWN0EhoucHJvZHVjdC5HZXRQcm9kdWN0UmVxdWVz",
             "dBobLnByb2R1Y3QuR2V0UHJvZHVjdFJlc3BvbnNlEkoKC0xpc3RQcm9kdWN0",
@@ -53,8 +53,10 @@ namespace GrpcProductService {
             "UHJvZHVjdHNSZXNwb25zZRJOCg1VcGRhdGVQcm9kdWN0Eh0ucHJvZHVjdC5V",
             "cGRhdGVQcm9kdWN0UmVxdWVzdBoeLnByb2R1Y3QuVXBkYXRlUHJvZHVjdFJl",
             "c3BvbnNlEk4KDURlbGV0ZVByb2R1Y3QSHS5wcm9kdWN0LkRlbGV0ZVByb2R1",
-            "Y3RSZXF1ZXN0Gh4ucHJvZHVjdC5EZWxldGVQcm9kdWN0UmVzcG9uc2VCFaoC",
-            "EkdycGNQcm9kdWN0U2VydmljZWIGcHJvdG8z"));
+            "Y3RSZXF1ZXN0Gh4ucHJvZHVjdC5EZWxldGVQcm9kdWN0UmVzcG9uc2USPwoL",
+            "Q2hhdFByb2R1Y3QSFS5wcm9kdWN0LlByb2R1Y3RNb2RlbBoVLnByb2R1Y3Qu",
+            "UHJvZHVjdE1vZGVsKAEwAUIVqgISR3JwY1Byb2R1Y3RTZXJ2aWNlYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

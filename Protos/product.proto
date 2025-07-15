@@ -14,7 +14,7 @@ service  Product {
   rpc ListProduct(ListProductsRequest) returns (ListProductsResponse);
   rpc UpdateProduct(UpdateProductRequest) returns (UpdateProductResponse);
   rpc DeleteProduct(DeleteProductRequest) returns ( DeleteProductResponse);
-  
+  rpc ChatProduct(stream ProductModel) returns (stream ProductModel);
 }
 
 // Product model used in message 
