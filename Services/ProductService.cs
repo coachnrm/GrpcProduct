@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using Grpc.Core;
 using GrpcProduct.Data;
 using GrpcProduct.Models;
@@ -10,10 +11,54 @@ namespace GrpcProduct.Services;
 public class ProductService : Product.ProductBase
 {
     private readonly AppDbContext _context;
+    private static readonly ConcurrentDictionary<string, IServerStreamWriter<ProductModel>> _subscribers = new();
 
     public ProductService(AppDbContext context)
     {
         _context = context;
+    }
+
+    private async Task BroadcastProductUpdate(ProductModel product, string action)
+    {
+        product.Tag = action; // Use the tag field to indicate the action
+        var broadcastTasks = new List<Task>();
+        
+        foreach (var subscriber in _subscribers)
+        {
+            try
+            {
+                broadcastTasks.Add(subscriber.Value.WriteAsync(product));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error broadcasting to subscriber {subscriber.Key}: {ex.Message}");
+                _subscribers.TryRemove(subscriber.Key, out _);
+            }
+        }
+        
+        await Task.WhenAll(broadcastTasks);
+    }
+
+    public override async Task SubscribeToUpdates(EmptyRequest request, 
+        IServerStreamWriter<ProductModel> responseStream, 
+        ServerCallContext context)
+    {
+        var subscriberId = Guid.NewGuid().ToString();
+        _subscribers.TryAdd(subscriberId, responseStream);
+        
+        try
+        {
+            // Keep the connection open
+            await Task.Delay(Timeout.Infinite, context.CancellationToken);
+        }
+        catch (TaskCanceledException)
+        {
+            // Connection closed
+        }
+        finally
+        {
+            _subscribers.TryRemove(subscriberId, out _);
+        }
     }
 
 
@@ -37,6 +82,20 @@ public class ProductService : Product.ProductBase
         };
         _context.Products.Add(productItem);
         await _context.SaveChangesAsync();
+
+        var productModel = new ProductModel
+        {
+            Id = productItem.Id.ToString(),
+            Name = productItem.Name,
+            Description = productItem.Description,
+            Price = Convert.ToDouble(request.Price),
+            CreatedAt = productItem.Created.ToString("o"),
+            UpdatedAt = productItem.Updated.ToString("o"),
+            Tag = productItem.Tags
+        };
+
+        // Broadcast the creation to all subscribers
+        await BroadcastProductUpdate(productModel, "created");
 
         return new CreateProductResponse
         {
@@ -163,8 +222,22 @@ public class ProductService : Product.ProductBase
         try
         {
             await _context.SaveChangesAsync();
-            // Return the new response 
 
+            var productModel = new ProductModel
+            {
+                Id = productItem.Id.ToString(),
+                Name = productItem.Name,
+                Description = productItem.Description,
+                Price = Convert.ToDouble(productItem.Price),
+                CreatedAt = productItem.Created.ToString("o"),
+                UpdatedAt = productItem.Updated.ToString("o"),
+                Tag = productItem.Tags
+            };
+
+            // Broadcast the update to all subscribers
+            await BroadcastProductUpdate(productModel, "updated");
+
+            // Return the new response 
             return new UpdateProductResponse
             {
                 Success = true,
@@ -214,8 +287,21 @@ public class ProductService : Product.ProductBase
 
         try
         {
+            var productModel = new ProductModel
+            {
+                Id = productItem.Id.ToString(),
+                Name = productItem.Name,
+                Description = productItem.Description,
+                Price = Convert.ToDouble(productItem.Price),
+                CreatedAt = productItem.Created.ToString("o"),
+                UpdatedAt = productItem.Updated.ToString("o"),
+                Tag = productItem.Tags
+            };
+
             _context.Products.Remove(productItem);
             await _context.SaveChangesAsync();
+            // Broadcast the deletion to all subscribers
+            await BroadcastProductUpdate(productModel, "deleted");
 
             return new DeleteProductResponse
             {
@@ -267,3 +353,4 @@ public class ProductService : Product.ProductBase
     }
 
 }
+

@@ -67,6 +67,8 @@ namespace GrpcProductService {
     static readonly grpc::Marshaller<global::GrpcProductService.DeleteProductResponse> __Marshaller_product_DeleteProductResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcProductService.DeleteProductResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::GrpcProductService.ProductModel> __Marshaller_product_ProductModel = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcProductService.ProductModel.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::GrpcProductService.EmptyRequest> __Marshaller_product_EmptyRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcProductService.EmptyRequest.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::GrpcProductService.CreateProductRequest, global::GrpcProductService.CreateProductResponse> __Method_CreateProduct = new grpc::Method<global::GrpcProductService.CreateProductRequest, global::GrpcProductService.CreateProductResponse>(
@@ -116,6 +118,14 @@ namespace GrpcProductService {
         __Marshaller_product_ProductModel,
         __Marshaller_product_ProductModel);
 
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::GrpcProductService.EmptyRequest, global::GrpcProductService.ProductModel> __Method_SubscribeToUpdates = new grpc::Method<global::GrpcProductService.EmptyRequest, global::GrpcProductService.ProductModel>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "SubscribeToUpdates",
+        __Marshaller_product_EmptyRequest,
+        __Marshaller_product_ProductModel);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -162,6 +172,12 @@ namespace GrpcProductService {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task SubscribeToUpdates(global::GrpcProductService.EmptyRequest request, grpc::IServerStreamWriter<global::GrpcProductService.ProductModel> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -175,7 +191,8 @@ namespace GrpcProductService {
           .AddMethod(__Method_ListProduct, serviceImpl.ListProduct)
           .AddMethod(__Method_UpdateProduct, serviceImpl.UpdateProduct)
           .AddMethod(__Method_DeleteProduct, serviceImpl.DeleteProduct)
-          .AddMethod(__Method_ChatProduct, serviceImpl.ChatProduct).Build();
+          .AddMethod(__Method_ChatProduct, serviceImpl.ChatProduct)
+          .AddMethod(__Method_SubscribeToUpdates, serviceImpl.SubscribeToUpdates).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -191,6 +208,7 @@ namespace GrpcProductService {
       serviceBinder.AddMethod(__Method_UpdateProduct, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcProductService.UpdateProductRequest, global::GrpcProductService.UpdateProductResponse>(serviceImpl.UpdateProduct));
       serviceBinder.AddMethod(__Method_DeleteProduct, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcProductService.DeleteProductRequest, global::GrpcProductService.DeleteProductResponse>(serviceImpl.DeleteProduct));
       serviceBinder.AddMethod(__Method_ChatProduct, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::GrpcProductService.ProductModel, global::GrpcProductService.ProductModel>(serviceImpl.ChatProduct));
+      serviceBinder.AddMethod(__Method_SubscribeToUpdates, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::GrpcProductService.EmptyRequest, global::GrpcProductService.ProductModel>(serviceImpl.SubscribeToUpdates));
     }
 
   }
