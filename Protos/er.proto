@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package er;
+
+option csharp_namespace = "GrpcErService";
+
+service Er {
+  rpc GetErPatients (GetErPatientsRequest) returns (GetErPatientsResponse);
+}
+
+// Request message for fetching ER patients (empty request)
+message GetErPatientsRequest {}
+
+message GetErPatientsResponse {
+  repeated ErPatient patients = 1;
+}
+
+message ErPatient {
+  int32 id = 1;
+  string hn = 2;
+  string fname = 3;
+  string lname = 4;
+  string pname = 5;
+  string enterErTime = 6; // Format: HH:mm:ss
+  string emergencyType = 7;
+  string currentStatus = 8;
+  string statusUpdatedAt = 9; // Format: ISO 8601
+}
+
