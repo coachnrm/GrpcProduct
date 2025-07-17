@@ -14,6 +14,7 @@ builder.Services.AddDbContext<ErdatabaseContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("ErDbConnection"));
 });
+builder.Services.AddGrpcReflection();
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -31,10 +32,28 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// ✅ Must add routing BEFORE endpoints
+app.UseRouting();
 // Configure the HTTP request pipeline.
 app.UseCors(MyAllowSpecificOrigins);
+app.UseGrpcWeb(); // สำคัญสำหรับ gRPC-Web
+
+
+// ✅ 4. Map gRPC services with gRPC-Web and CORS
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapGrpcService<ErService>()
+         .EnableGrpcWeb()
+         .RequireCors(MyAllowSpecificOrigins);
+
+    endpoints.MapGrpcReflectionService();
+});
+
 app.MapGrpcService<GreeterService>();
-app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 app.MapGrpcService<ProductService>();
-app.MapGrpcService<ErService>();
+// app.MapGrpcService<ErService>();
+
+app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
+
+app.Urls.Add("http://*:5157");
 app.Run();

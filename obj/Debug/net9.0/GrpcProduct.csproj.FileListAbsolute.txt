@@ -158,3 +158,6 @@ D:\GrpcProduct\obj\Debug\net9.0\refint\GrpcProduct.dll
 D:\GrpcProduct\obj\Debug\net9.0\GrpcProduct.pdb
 D:\GrpcProduct\obj\Debug\net9.0\GrpcProduct.genruntimeconfig.cache
 D:\GrpcProduct\obj\Debug\net9.0\ref\GrpcProduct.dll
+D:\GrpcProduct\bin\Debug\net9.0\Grpc.AspNetCore.Server.Reflection.dll
+D:\GrpcProduct\bin\Debug\net9.0\Grpc.AspNetCore.Web.dll
+D:\GrpcProduct\bin\Debug\net9.0\Grpc.Reflection.dll
