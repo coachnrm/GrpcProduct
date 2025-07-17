@@ -7,6 +7,14 @@ option csharp_namespace = "GrpcErService";
 service Er {
   rpc GetErPatients (GetErPatientsRequest) returns (GetErPatientsResponse);
   rpc GetErPatientsStream (GetErPatientsRequest) returns (stream ErPatientUpdate);
+  rpc GetErStatusCountStream (GetErStatusCountRequest) returns (stream ErStatusCountUpdate);
+}
+
+// Add these messages to your proto file
+message GetErStatusCountRequest {}
+
+message ErStatusCountUpdate {
+  map<string, int32> status_counts = 1;
 }
 
 // Request message for fetching ER patients (empty request)

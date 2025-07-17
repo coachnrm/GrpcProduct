@@ -51,6 +51,10 @@ namespace GrpcErService {
     static readonly grpc::Marshaller<global::GrpcErService.GetErPatientsResponse> __Marshaller_er_GetErPatientsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcErService.GetErPatientsResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::GrpcErService.ErPatientUpdate> __Marshaller_er_ErPatientUpdate = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcErService.ErPatientUpdate.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::GrpcErService.GetErStatusCountRequest> __Marshaller_er_GetErStatusCountRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcErService.GetErStatusCountRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::GrpcErService.ErStatusCountUpdate> __Marshaller_er_ErStatusCountUpdate = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcErService.ErStatusCountUpdate.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::GrpcErService.GetErPatientsRequest, global::GrpcErService.GetErPatientsResponse> __Method_GetErPatients = new grpc::Method<global::GrpcErService.GetErPatientsRequest, global::GrpcErService.GetErPatientsResponse>(
@@ -67,6 +71,14 @@ namespace GrpcErService {
         "GetErPatientsStream",
         __Marshaller_er_GetErPatientsRequest,
         __Marshaller_er_ErPatientUpdate);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::GrpcErService.GetErStatusCountRequest, global::GrpcErService.ErStatusCountUpdate> __Method_GetErStatusCountStream = new grpc::Method<global::GrpcErService.GetErStatusCountRequest, global::GrpcErService.ErStatusCountUpdate>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "GetErStatusCountStream",
+        __Marshaller_er_GetErStatusCountRequest,
+        __Marshaller_er_ErStatusCountUpdate);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -90,6 +102,12 @@ namespace GrpcErService {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task GetErStatusCountStream(global::GrpcErService.GetErStatusCountRequest request, grpc::IServerStreamWriter<global::GrpcErService.ErStatusCountUpdate> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -99,7 +117,8 @@ namespace GrpcErService {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_GetErPatients, serviceImpl.GetErPatients)
-          .AddMethod(__Method_GetErPatientsStream, serviceImpl.GetErPatientsStream).Build();
+          .AddMethod(__Method_GetErPatientsStream, serviceImpl.GetErPatientsStream)
+          .AddMethod(__Method_GetErStatusCountStream, serviceImpl.GetErStatusCountStream).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -111,6 +130,7 @@ namespace GrpcErService {
     {
       serviceBinder.AddMethod(__Method_GetErPatients, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcErService.GetErPatientsRequest, global::GrpcErService.GetErPatientsResponse>(serviceImpl.GetErPatients));
       serviceBinder.AddMethod(__Method_GetErPatientsStream, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::GrpcErService.GetErPatientsRequest, global::GrpcErService.ErPatientUpdate>(serviceImpl.GetErPatientsStream));
+      serviceBinder.AddMethod(__Method_GetErStatusCountStream, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::GrpcErService.GetErStatusCountRequest, global::GrpcErService.ErStatusCountUpdate>(serviceImpl.GetErStatusCountStream));
     }
 
   }
