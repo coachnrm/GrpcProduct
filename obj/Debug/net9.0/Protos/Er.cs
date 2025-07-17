@@ -26,18 +26,26 @@ namespace GrpcErService {
           string.Concat(
             "Cg9Qcm90b3MvZXIucHJvdG8SAmVyIhYKFEdldEVyUGF0aWVudHNSZXF1ZXN0",
             "IjgKFUdldEVyUGF0aWVudHNSZXNwb25zZRIfCghwYXRpZW50cxgBIAMoCzIN",
-            "LmVyLkVyUGF0aWVudCKsAQoJRXJQYXRpZW50EgoKAmlkGAEgASgFEgoKAmhu",
-            "GAIgASgJEg0KBWZuYW1lGAMgASgJEg0KBWxuYW1lGAQgASgJEg0KBXBuYW1l",
-            "GAUgASgJEhMKC2VudGVyRXJUaW1lGAYgASgJEhUKDWVtZXJnZW5jeVR5cGUY",
-            "ByABKAkSFQoNY3VycmVudFN0YXR1cxgIIAEoCRIXCg9zdGF0dXNVcGRhdGVk",
-            "QXQYCSABKAkySgoCRXISRAoNR2V0RXJQYXRpZW50cxIYLmVyLkdldEVyUGF0",
-            "aWVudHNSZXF1ZXN0GhkuZXIuR2V0RXJQYXRpZW50c1Jlc3BvbnNlQhCqAg1H",
-            "cnBjRXJTZXJ2aWNlYgZwcm90bzM="));
+            "LmVyLkVyUGF0aWVudCLxAQoPRXJQYXRpZW50VXBkYXRlEjIKDWluaXRpYWxf",
+            "YmF0Y2gYASABKAsyGS5lci5HZXRFclBhdGllbnRzUmVzcG9uc2VIABIoCg91",
+            "cGRhdGVkX3BhdGllbnQYAiABKAsyDS5lci5FclBhdGllbnRIABIzCgt1cGRh",
+            "dGVfdHlwZRgDIAEoDjIeLmVyLkVyUGF0aWVudFVwZGF0ZS5VcGRhdGVUeXBl",
+            "IkEKClVwZGF0ZVR5cGUSCwoHVU5LTk9XThAAEgwKCElOU0VSVEVEEAESCwoH",
+            "VVBEQVRFRBACEgsKB0RFTEVURUQQA0IICgZ1cGRhdGUirAEKCUVyUGF0aWVu",
+            "dBIKCgJpZBgBIAEoBRIKCgJobhgCIAEoCRINCgVmbmFtZRgDIAEoCRINCgVs",
+            "bmFtZRgEIAEoCRINCgVwbmFtZRgFIAEoCRITCgtlbnRlckVyVGltZRgGIAEo",
+            "CRIVCg1lbWVyZ2VuY3lUeXBlGAcgASgJEhUKDWN1cnJlbnRTdGF0dXMYCCAB",
+            "KAkSFwoPc3RhdHVzVXBkYXRlZEF0GAkgASgJMpIBCgJFchJECg1HZXRFclBh",
+            "dGllbnRzEhguZXIuR2V0RXJQYXRpZW50c1JlcXVlc3QaGS5lci5HZXRFclBh",
+            "dGllbnRzUmVzcG9uc2USRgoTR2V0RXJQYXRpZW50c1N0cmVhbRIYLmVyLkdl",
+            "dEVyUGF0aWVudHNSZXF1ZXN0GhMuZXIuRXJQYXRpZW50VXBkYXRlMAFCEKoC",
+            "DUdycGNFclNlcnZpY2ViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcErService.GetErPatientsRequest), global::GrpcErService.GetErPatientsRequest.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcErService.GetErPatientsResponse), global::GrpcErService.GetErPatientsResponse.Parser, new[]{ "Patients" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GrpcErService.ErPatientUpdate), global::GrpcErService.ErPatientUpdate.Parser, new[]{ "InitialBatch", "UpdatedPatient", "UpdateType" }, new[]{ "Update" }, new[]{ typeof(global::GrpcErService.ErPatientUpdate.Types.UpdateType) }, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GrpcErService.ErPatient), global::GrpcErService.ErPatient.Parser, new[]{ "Id", "Hn", "Fname", "Lname", "Pname", "EnterErTime", "EmergencyType", "CurrentStatus", "StatusUpdatedAt" }, null, null, null, null)
           }));
     }
@@ -381,6 +389,344 @@ namespace GrpcErService {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ErPatientUpdate : pb::IMessage<ErPatientUpdate>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ErPatientUpdate> _parser = new pb::MessageParser<ErPatientUpdate>(() => new ErPatientUpdate());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ErPatientUpdate> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::GrpcErService.ErReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ErPatientUpdate() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ErPatientUpdate(ErPatientUpdate other) : this() {
+      updateType_ = other.updateType_;
+      switch (other.UpdateCase) {
+        case UpdateOneofCase.InitialBatch:
+          InitialBatch = other.InitialBatch.Clone();
+          break;
+        case UpdateOneofCase.UpdatedPatient:
+          UpdatedPatient = other.UpdatedPatient.Clone();
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ErPatientUpdate Clone() {
+      return new ErPatientUpdate(this);
+    }
+
+    /// <summary>Field number for the "initial_batch" field.</summary>
+    public const int InitialBatchFieldNumber = 1;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::GrpcErService.GetErPatientsResponse InitialBatch {
+      get { return updateCase_ == UpdateOneofCase.InitialBatch ? (global::GrpcErService.GetErPatientsResponse) update_ : null; }
+      set {
+        update_ = value;
+        updateCase_ = value == null ? UpdateOneofCase.None : UpdateOneofCase.InitialBatch;
+      }
+    }
+
+    /// <summary>Field number for the "updated_patient" field.</summary>
+    public const int UpdatedPatientFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::GrpcErService.ErPatient UpdatedPatient {
+      get { return updateCase_ == UpdateOneofCase.UpdatedPatient ? (global::GrpcErService.ErPatient) update_ : null; }
+      set {
+        update_ = value;
+        updateCase_ = value == null ? UpdateOneofCase.None : UpdateOneofCase.UpdatedPatient;
+      }
+    }
+
+    /// <summary>Field number for the "update_type" field.</summary>
+    public const int UpdateTypeFieldNumber = 3;
+    private global::GrpcErService.ErPatientUpdate.Types.UpdateType updateType_ = global::GrpcErService.ErPatientUpdate.Types.UpdateType.Unknown;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::GrpcErService.ErPatientUpdate.Types.UpdateType UpdateType {
+      get { return updateType_; }
+      set {
+        updateType_ = value;
+      }
+    }
+
+    private object update_;
+    /// <summary>Enum of possible cases for the "update" oneof.</summary>
+    public enum UpdateOneofCase {
+      None = 0,
+      InitialBatch = 1,
+      UpdatedPatient = 2,
+    }
+    private UpdateOneofCase updateCase_ = UpdateOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public UpdateOneofCase UpdateCase {
+      get { return updateCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearUpdate() {
+      updateCase_ = UpdateOneofCase.None;
+      update_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ErPatientUpdate);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ErPatientUpdate other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(InitialBatch, other.InitialBatch)) return false;
+      if (!object.Equals(UpdatedPatient, other.UpdatedPatient)) return false;
+      if (UpdateType != other.UpdateType) return false;
+      if (UpdateCase != other.UpdateCase) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (updateCase_ == UpdateOneofCase.InitialBatch) hash ^= InitialBatch.GetHashCode();
+      if (updateCase_ == UpdateOneofCase.UpdatedPatient) hash ^= UpdatedPatient.GetHashCode();
+      if (UpdateType != global::GrpcErService.ErPatientUpdate.Types.UpdateType.Unknown) hash ^= UpdateType.GetHashCode();
+      hash ^= (int) updateCase_;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (updateCase_ == UpdateOneofCase.InitialBatch) {
+        output.WriteRawTag(10);
+        output.WriteMessage(InitialBatch);
+      }
+      if (updateCase_ == UpdateOneofCase.UpdatedPatient) {
+        output.WriteRawTag(18);
+        output.WriteMessage(UpdatedPatient);
+      }
+      if (UpdateType != global::GrpcErService.ErPatientUpdate.Types.UpdateType.Unknown) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) UpdateType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (updateCase_ == UpdateOneofCase.InitialBatch) {
+        output.WriteRawTag(10);
+        output.WriteMessage(InitialBatch);
+      }
+      if (updateCase_ == UpdateOneofCase.UpdatedPatient) {
+        output.WriteRawTag(18);
+        output.WriteMessage(UpdatedPatient);
+      }
+      if (UpdateType != global::GrpcErService.ErPatientUpdate.Types.UpdateType.Unknown) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) UpdateType);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (updateCase_ == UpdateOneofCase.InitialBatch) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(InitialBatch);
+      }
+      if (updateCase_ == UpdateOneofCase.UpdatedPatient) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UpdatedPatient);
+      }
+      if (UpdateType != global::GrpcErService.ErPatientUpdate.Types.UpdateType.Unknown) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) UpdateType);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ErPatientUpdate other) {
+      if (other == null) {
+        return;
+      }
+      if (other.UpdateType != global::GrpcErService.ErPatientUpdate.Types.UpdateType.Unknown) {
+        UpdateType = other.UpdateType;
+      }
+      switch (other.UpdateCase) {
+        case UpdateOneofCase.InitialBatch:
+          if (InitialBatch == null) {
+            InitialBatch = new global::GrpcErService.GetErPatientsResponse();
+          }
+          InitialBatch.MergeFrom(other.InitialBatch);
+          break;
+        case UpdateOneofCase.UpdatedPatient:
+          if (UpdatedPatient == null) {
+            UpdatedPatient = new global::GrpcErService.ErPatient();
+          }
+          UpdatedPatient.MergeFrom(other.UpdatedPatient);
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            global::GrpcErService.GetErPatientsResponse subBuilder = new global::GrpcErService.GetErPatientsResponse();
+            if (updateCase_ == UpdateOneofCase.InitialBatch) {
+              subBuilder.MergeFrom(InitialBatch);
+            }
+            input.ReadMessage(subBuilder);
+            InitialBatch = subBuilder;
+            break;
+          }
+          case 18: {
+            global::GrpcErService.ErPatient subBuilder = new global::GrpcErService.ErPatient();
+            if (updateCase_ == UpdateOneofCase.UpdatedPatient) {
+              subBuilder.MergeFrom(UpdatedPatient);
+            }
+            input.ReadMessage(subBuilder);
+            UpdatedPatient = subBuilder;
+            break;
+          }
+          case 24: {
+            UpdateType = (global::GrpcErService.ErPatientUpdate.Types.UpdateType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            global::GrpcErService.GetErPatientsResponse subBuilder = new global::GrpcErService.GetErPatientsResponse();
+            if (updateCase_ == UpdateOneofCase.InitialBatch) {
+              subBuilder.MergeFrom(InitialBatch);
+            }
+            input.ReadMessage(subBuilder);
+            InitialBatch = subBuilder;
+            break;
+          }
+          case 18: {
+            global::GrpcErService.ErPatient subBuilder = new global::GrpcErService.ErPatient();
+            if (updateCase_ == UpdateOneofCase.UpdatedPatient) {
+              subBuilder.MergeFrom(UpdatedPatient);
+            }
+            input.ReadMessage(subBuilder);
+            UpdatedPatient = subBuilder;
+            break;
+          }
+          case 24: {
+            UpdateType = (global::GrpcErService.ErPatientUpdate.Types.UpdateType) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the ErPatientUpdate message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static partial class Types {
+      public enum UpdateType {
+        [pbr::OriginalName("UNKNOWN")] Unknown = 0,
+        [pbr::OriginalName("INSERTED")] Inserted = 1,
+        [pbr::OriginalName("UPDATED")] Updated = 2,
+        [pbr::OriginalName("DELETED")] Deleted = 3,
+      }
+
+    }
+    #endregion
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class ErPatient : pb::IMessage<ErPatient>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -395,7 +741,7 @@ namespace GrpcErService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GrpcErService.ErReflection.Descriptor.MessageTypes[2]; }
+      get { return global::GrpcErService.ErReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

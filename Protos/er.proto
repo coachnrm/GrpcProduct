@@ -6,6 +6,7 @@ option csharp_namespace = "GrpcErService";
 
 service Er {
   rpc GetErPatients (GetErPatientsRequest) returns (GetErPatientsResponse);
+  rpc GetErPatientsStream (GetErPatientsRequest) returns (stream ErPatientUpdate);
 }
 
 // Request message for fetching ER patients (empty request)
@@ -13,6 +14,22 @@ message GetErPatientsRequest {}
 
 message GetErPatientsResponse {
   repeated ErPatient patients = 1;
+}
+
+message ErPatientUpdate {
+  oneof update {
+    GetErPatientsResponse initial_batch = 1;
+    ErPatient updated_patient = 2;
+  }
+  
+  enum UpdateType {
+    UNKNOWN = 0;
+    INSERTED = 1;
+    UPDATED = 2;
+    DELETED = 3;
+  }
+  
+  UpdateType update_type = 3;
 }
 
 message ErPatient {

@@ -49,6 +49,8 @@ namespace GrpcErService {
     static readonly grpc::Marshaller<global::GrpcErService.GetErPatientsRequest> __Marshaller_er_GetErPatientsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcErService.GetErPatientsRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::GrpcErService.GetErPatientsResponse> __Marshaller_er_GetErPatientsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcErService.GetErPatientsResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::GrpcErService.ErPatientUpdate> __Marshaller_er_ErPatientUpdate = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GrpcErService.ErPatientUpdate.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::GrpcErService.GetErPatientsRequest, global::GrpcErService.GetErPatientsResponse> __Method_GetErPatients = new grpc::Method<global::GrpcErService.GetErPatientsRequest, global::GrpcErService.GetErPatientsResponse>(
@@ -57,6 +59,14 @@ namespace GrpcErService {
         "GetErPatients",
         __Marshaller_er_GetErPatientsRequest,
         __Marshaller_er_GetErPatientsResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::GrpcErService.GetErPatientsRequest, global::GrpcErService.ErPatientUpdate> __Method_GetErPatientsStream = new grpc::Method<global::GrpcErService.GetErPatientsRequest, global::GrpcErService.ErPatientUpdate>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "GetErPatientsStream",
+        __Marshaller_er_GetErPatientsRequest,
+        __Marshaller_er_ErPatientUpdate);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -74,6 +84,12 @@ namespace GrpcErService {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task GetErPatientsStream(global::GrpcErService.GetErPatientsRequest request, grpc::IServerStreamWriter<global::GrpcErService.ErPatientUpdate> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -82,7 +98,8 @@ namespace GrpcErService {
     public static grpc::ServerServiceDefinition BindService(ErBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_GetErPatients, serviceImpl.GetErPatients).Build();
+          .AddMethod(__Method_GetErPatients, serviceImpl.GetErPatients)
+          .AddMethod(__Method_GetErPatientsStream, serviceImpl.GetErPatientsStream).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -93,6 +110,7 @@ namespace GrpcErService {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, ErBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_GetErPatients, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GrpcErService.GetErPatientsRequest, global::GrpcErService.GetErPatientsResponse>(serviceImpl.GetErPatients));
+      serviceBinder.AddMethod(__Method_GetErPatientsStream, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::GrpcErService.GetErPatientsRequest, global::GrpcErService.ErPatientUpdate>(serviceImpl.GetErPatientsStream));
     }
 
   }
